@@ -61,7 +61,7 @@ if(age > 18 && age < 21){
 }
 */
 
-// 클릭하며 색 바꿈
+/* 클릭하며 색 바꿈
 const title = document.querySelector("#title");
 
 const BASE_COLOR = "rgb(52, 73, 94)"; 
@@ -85,6 +85,62 @@ function init() {
     title.addEventListener("click", handleClick);
 }
 
-init();
+init(); */
 
+
+//css가 할 일은 css가 하고 js는 로직 처리만
+//원하는 부분에 class가 존재할 경우 버그생김
+/*
+const title = document.querySelector("#title");
+
+const CLICKED_CLASS = "clicked"
+
+function handleClick() {
+    const currentClass = title.className;
+    if(currentClass !== CLICKED_CLASS) {  //!== 같지 않다
+        title.className = CLICKED_CLASS;
+    } else {
+        title.className = "";
+    }
+} 
+function init() {
+    title.addEventListener("click", handleClick);
+}
+
+init();
+*/
+//class name의 element class list를 이용하여 버그 수정
+/*
+const title = document.querySelector("#title");
+
+const CLICKED_CLASS = "clicked";
+
+function handleClick() {
+    const hasClass = title.classList.contains(CLICKED_CLASS);
+    if(!hasClass) {  //! = not
+        title.classList.add(CLICKED_CLASS);
+    } else {
+        title.classList.remove(CLICKED_CLASS);
+    }
+} 
+function init() {
+    title.addEventListener("click", handleClick);
+}
+
+init(); */
+
+//toggle을 이용하여 코드 단축
+const title = document.querySelector("#title");
+
+const CLICKED_CLASS = "clicked";
+
+function handleClick() {
+    title.classList.toggle(CLICKED_CLASS);
+}
+
+function init() {
+    title.addEventListener("click", handleClick);
+}
+
+init();
 
